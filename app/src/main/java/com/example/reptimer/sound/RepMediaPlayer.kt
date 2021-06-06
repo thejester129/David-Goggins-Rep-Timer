@@ -2,12 +2,11 @@ package com.example.reptimer.sound
 
 import android.content.Context
 import android.media.MediaPlayer
-import android.net.Uri
 import com.example.reptimer.R
 import kotlin.random.Random
 
 
-class RepMediaPlayer(private val context: Context) : RepSoundPlayer {
+class RepMediaPlayer(private val context: Context) : IRepSoundPlayer {
     private val mediaPlayer = MediaPlayer().apply {
         setOnPreparedListener { start() }
         setOnCompletionListener { reset() }
@@ -32,6 +31,5 @@ class RepMediaPlayer(private val context: Context) : RepSoundPlayer {
                                      R.raw.stay_hard_2,
 
                                     )
-
 
 }

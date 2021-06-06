@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.example.reptimer.sound.RepSoundPlayer
+import com.example.reptimer.sound.IRepSoundPlayer
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -15,7 +15,7 @@ class TimerViewModel: ViewModel() {
             field = value
             currentTotalSecs.postValue(totalTimeSeconds())
         }
-    var totalSecsPerRep:Int = 15
+    var totalSecsPerRep:Int = 60
         set(value) {
             field = value
             currentTotalSecs.postValue(totalTimeSeconds())
@@ -45,7 +45,7 @@ class TimerViewModel: ViewModel() {
     var stopButtonVisible:MutableLiveData<Boolean> = MutableLiveData(false)
 
     // sound player interface with callback
-    lateinit var repSoundPlayer: RepSoundPlayer
+    lateinit var IRepSoundPlayer: IRepSoundPlayer
 
     fun startTimer(){
         initTimer()
@@ -81,7 +81,7 @@ class TimerViewModel: ViewModel() {
         countdownTimerTask.remainingRepSecs.observeForever { secs ->
             currentRepSecs.postValue(secs)
             if(secs == totalSecsPerRep){
-                repSoundPlayer.playRepSound()
+                IRepSoundPlayer.playRepSound()
             }
         }
     }
