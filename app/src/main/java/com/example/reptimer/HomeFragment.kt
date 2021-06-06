@@ -16,7 +16,7 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val mediaPlayer = RepMediaPlayer(requireContext())
-        viewModel.repSoundPlayer = mediaPlayer
+        viewModel.IRepSoundPlayer = mediaPlayer
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {

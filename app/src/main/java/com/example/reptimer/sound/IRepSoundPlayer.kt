@@ -1,5 +1,5 @@
 package com.example.reptimer.sound
 
-interface RepSoundPlayer {
+interface IRepSoundPlayer {
     fun playRepSound()
 }
