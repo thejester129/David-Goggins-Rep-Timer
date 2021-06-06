@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="viewModel" type="com.example.reptimer.TimerViewModel"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_gradient"
+        tools:context=".HomeFragment">
+
+        <ProgressBar
+            android:id="@+id/total_progress_bar"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="64dp"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progressDrawable="@drawable/total_progress_bar_drawable"
+            android:background="@drawable/circular_shape"
+            android:progress="@{viewModel.totalProgress}"
+            />
+
+        <ProgressBar
+            android:id="@+id/rep_progress_bar"
+            android:layout_width="284dp"
+            android:layout_height="284dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="72dp"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progressDrawable="@drawable/rep_progress_bar_drawable"
+            android:background="@drawable/circular_shape"
+            android:progress="@{viewModel.repProgress}"
+            />
+
+        <TextView
+            android:id="@+id/total_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/total_progress_bar"
+            app:layout_constraintBottom_toBottomOf="@id/total_progress_bar"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:textSize="45sp"
+            android:text="@{viewModel.displayTotalTime}"
+            />
+
+        <TextView
+            android:id="@+id/total_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/total_time_text"
+            android:text="@string/total_time"
+            />
+
+        <NumberPicker
+            android:id="@+id/rep_repeats_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="128dp"
+            app:layout_constraintRight_toLeftOf="@id/rep_secs_picker"
+            app:layout_constraintBottom_toBottomOf="@id/rep_secs_picker"
+            app:layout_constraintTop_toTopOf="@id/rep_secs_picker"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/rep_repeats_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/rep_repeats_picker"
+            app:layout_constraintRight_toRightOf="@+id/rep_repeats_picker"
+            app:layout_constraintTop_toBottomOf="@id/rep_secs_picker"
+            android:text="@string/reps"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rep_repeats_picker"
+            app:layout_constraintBottom_toBottomOf="@+id/rep_repeats_picker"
+            android:textSize="25dp"
+            android:text="x"
+            />
+
+        <NumberPicker
+            android:id="@+id/rep_secs_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="128dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/rep_repeats_picker"
+            app:layout_constraintTop_toBottomOf="@id/total_progress_bar"
+            style="@style/TextAppearance.AppCompat.Large"
+            />
+
+        <TextView
+            android:id="@+id/rep_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/rep_secs_picker"
+            app:layout_constraintRight_toRightOf="@+id/rep_secs_picker"
+            app:layout_constraintTop_toBottomOf="@id/rep_secs_picker"
+            android:text="@string/secs"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/start_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:src="@drawable/start_icon"
+            android:contentDescription="@string/start_timer"
+            android:visibility="@{viewModel.startButtonVisible ? View.VISIBLE : View.GONE}"
+            android:onClick="@{() -> viewModel.startTimer()}"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/center_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.5"
+            android:orientation="vertical"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/pause_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintRight_toLeftOf="@id/center_guide"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/pause_icon"
+            android:contentDescription="@string/pause_timer"
+            android:visibility="@{viewModel.pauseButtonVisible ? View.VISIBLE : View.GONE}"
+            android:onClick="@{() -> viewModel.pauseTimer()}"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/stop_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintLeft_toRightOf="@id/center_guide"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/stop_icon"
+            android:contentDescription="@string/stop_timer"
+            android:visibility="@{viewModel.stopButtonVisible ? View.VISIBLE : View.GONE}"
+            android:onClick="@{() -> viewModel.stopTimer()}"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

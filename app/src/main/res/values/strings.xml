@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Rep Timer</string>
+    <string name="app_name">David Goggins Rep Timer</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -9,4 +9,16 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="total_time">Total Time</string>
+    <string name="minutes">Minutes</string>
+    <string name="mins">Mins</string>
+    <string name="secs">Secs</string>
+    <string name="rep_time">Rep Time</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="start_timer">Start Timer</string>
+    <string name="pause_timer">Pause Timer</string>
+    <string name="stop_timer">Stop Timer</string>
+    <string name="reps">Reps</string>
+    <string name="rep_secs">Rep Secs</string>
 </resources>
